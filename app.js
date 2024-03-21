@@ -148,29 +148,36 @@ console.log(message('Allie'));
 
 
 
-let Student = function(name, age, hometown) {
+function Student(name, age, hometown) {
   this.name = name;
   this.age = age;
   this.hometown = hometown;
-};
+}
 
 let joe = new Student('Joe Schmoe', 100, 'Anytown, USA');
 
+
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
-// console.log(joe);
+console.log(joe);
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
-
+function Student(name, age, hometown) {
+  this.name = name;
+  this.age = age;
+  this.hometown = hometown;
+}
 
 Student.prototype.greeting = function() {
   return `Hi, my name is ${this.name}`;
 };
 
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
@@ -181,7 +188,7 @@ Student.courseName = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(Student.courseName());
+console.log(Student.courseName());
 
 
 
@@ -192,17 +199,19 @@ Student.prototype.scope = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scope();
+joe.scope();
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scopeArrow();
+joe.scopeArrow();
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//// Answer: When joe.scope() is invoked, "this" refers to the instance "joe" because scope() is a regular function defined in the prototype of Student.
+
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//// Answer: When joe.scopeArrow() is invoked, "this" refers to the global object (window in a browser or global in Node.js) because scopeArrow() is an arrow function defined in the prototype of Student.
+
 // 3. Explain why "this" is different when an arrow function is used.
-//
+//// Answer: Arrow functions in JavaScript have lexical scoping for their "this" keyword, meaning they do not have their own "this" context. Instead, they inherit "this" from the surrounding code when they are defined. In the case of joe.scopeArrow(), since scopeArrow() is an arrow function, it inherits "this" from its surrounding lexical scope, which is the global scope, hence "this" refers to the global object.
